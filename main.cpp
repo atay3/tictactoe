@@ -6,7 +6,7 @@ int main() {
     char move;
 
     cout << "Welcome to Tic Tac Toe!\n\n";
-    cout << "Use lowercase letters a-i to place your mark.\n\n";
+    cout << "Use numbers 1-9 to place your mark. Player 1 goes first.\n\n";
   
     initializeBoard(board);
     drawBoard(board);
@@ -15,14 +15,16 @@ int main() {
         move = getPlay(board, move);
         setPlay(board, move, turn);
 
-        if (turn == PLAYER1) {
-            turn = PLAYER2;
-        } else {
-            turn = PLAYER1;
-        }
-
         clearScreen();
         drawBoard(board);
+      
+        if (turn == PLAYER1) {
+            cout << "Player 2's turn.\n\n";
+            turn = PLAYER2;
+        } else {
+            cout << "Player 1's turn.\n\n";
+            turn = PLAYER1;
+        }
     }
 
     if (gameWon(board)) {

@@ -8,11 +8,11 @@
  * for clearing the screen.
  */
 void clearScreen() {
-  //Output a newline for spacing
-  cout << endl;
-  //Use ANSI escape sequence to clear the screen
-  cout << "\033c";
-  cout << endl;
+    //Output a newline for spacing
+    cout << endl;
+    //Use ANSI escape sequence to clear the screen
+    cout << "\033c";
+    cout << endl;
 }
 
 /**
@@ -25,38 +25,36 @@ void clearScreen() {
 * @param the board is the tic-tac-toe board that should be drawn
 */
 void drawBoard(vector <char> &board) {
-  for (int i = 0; i < 9; i += 3) {
-    if (board.at(i) == 'x') {
-      cout << "\033[1;34m" << "  " << board.at(i) << "  " << "\033[0m" << "|";
-    } else if (board.at(i) == 'o') {
-      cout << "\033[1;35m" << "  " << board.at(i) << "  " << "\033[0m" << "|";
-    } else {
-      cout << "\033[1;32m" << "  " << board.at(i) << "  " << "\033[0m" << "|";
-    }
+  for (int i = 0; i < 9; i += 3)
+    {
+      if (board.at(i) == 'x') {
+        cout << "\033[1;34m" << "  " << board.at(i) << "  " << "\033[0m" << "|";
+      } else if (board.at(i) == 'o') {
+        cout << "\033[1;35m" << "  " << board.at(i) << "  " << "\033[0m" << "|";
+      } else {
+        cout << "\033[1;32m" << "  " << board.at(i) << "  " << "\033[0m" << "|";
+      }
 
-    if (board.at(i + 1) == 'x') {
-      cout << "\033[1;34m" << "  " << board.at(i + 1) << "  " << "\033[0m" << "|";
-    } else if (board.at(i + 1) == 'o') {
-      cout << "\033[1;35m" << "  " << board.at(i + 1) << "  " << "\033[0m" << "|";
-    } else {
-      cout << "\033[1;32m" << "  " << board.at(i + 1) << "  " << "\033[0m" << "|";
-    }
+      if (board.at(i + 1) == 'x') {
+        cout << "\033[1;34m" << "  " << board.at(i + 1) << "  " << "\033[0m" << "|";
+      } else if (board.at(i + 1) == 'o') {
+        cout << "\033[1;35m" << "  " << board.at(i + 1) << "  " << "\033[0m" << "|";
+      } else {
+        cout << "\033[1;32m" << "  " << board.at(i + 1) << "  " << "\033[0m" << "|";
+      }
 
-    if (board.at(i + 2) == 'x') {
-      cout << "\033[1;34m" << "  " << board.at(i + 2) << "  " << "\033[0m" << endl;
-    } else if (board.at(i + 2) == 'o') {
-      cout << "\033[1;35m" << "  " << board.at(i + 2) << "  " << "\033[0m" << endl;
-    } else {
-      cout << "\033[1;32m" << "  " << board.at(i + 2) << "  " << "\033[0m" << endl;
-    }
+      if (board.at(i + 2) == 'x') {
+        cout << "\033[1;34m" << "  " << board.at(i + 2) << "  " << "\033[0m" << endl;
+      } else if (board.at(i + 2) == 'o') {
+        cout << "\033[1;35m" << "  " << board.at(i + 2) << "  " << "\033[0m" << endl;
+      } else {
+        cout << "\033[1;32m" << "  " << board.at(i + 2) << "  " << "\033[0m" << endl;
+      }
 
-    if (i < 6) {
-      cout << "-----|-----|-----" << endl;
+        if (i < 6)
+            cout << "-----|-----|-----" << endl;
     }
-  
-  }
-
-  cout << endl;
+    cout << endl;
 }
 
 
@@ -66,11 +64,11 @@ void drawBoard(vector <char> &board) {
 * @param matrix the vector to initialize
 */
 void initializeBoard(vector<char> &board) {
-  char val = 'a';
-
-  for (int i = 0; i < board.size(); ++i) {
-    board[i] = val++;
-  }
+    //char val = 'a';
+    // for (int i = 0; i < board.size(); ++i) {
+    //     board[i] = val++;
+    // }
+    board = {'7', '8', '9', '4', '5', '6', '1', '2', '3'};
 }
 
 /**
@@ -80,9 +78,41 @@ void initializeBoard(vector<char> &board) {
 * @return the integer index in the vector
 */
 int convertMove(char move) {
-  int index = move - 'a';
+    // int index = move - 'a';
+    int num = move - '0';
+    int index = -1;
 
-  return index;
+    switch (num) {
+      case 1:
+        index = 6;
+        break;
+      case 2:
+          index = 7;
+          break;
+      case 3:
+          index = 8;
+          break;
+      case 4:
+          index = 3;
+          break;
+      case 5:
+          index = 4;
+          break;
+      case 6:
+          index = 5;
+          break;
+      case 7:
+          index = 0;
+          break;
+      case 8:
+          index = 1;
+          break;
+      case 9:
+          index = 2;
+          break;
+    }
+  
+    return index;
 }
 
 /**
@@ -93,11 +123,11 @@ int convertMove(char move) {
 * @return true if move's state is available (not marked) AND is in bounds
 */
 bool validPlacement(vector <char> &board, int move) {
-  if (board[move] == 'x' || board[move] == 'o') {
-    return false;
-  }
+    if (board[move] == 'x' || board[move] == 'o') {
+        return false;
+    }
 
-  return true;
+    return true;
 }
 
 /**
@@ -108,16 +138,16 @@ bool validPlacement(vector <char> &board, int move) {
 * @return an integer index in board vector of a chosen available board spot
 */
 int setPlay(vector <char> &board, char move, int turn) {
-  int index = convertMove(move);
-  if (validPlacement(board, index)) {
-    if (turn == PLAYER1) {
-      board.at(index) = 'x';
-    } else {
-      board.at(index) = 'o';
+    int index = convertMove(move);
+    if (validPlacement(board, index)) {
+        if (turn == PLAYER1) {
+            board.at(index) = 'x';
+        } else {
+            board.at(index) = 'o';
+        }
     }
-  }
 
-  return index;
+    return index;
 }
 
 /** 
@@ -127,13 +157,13 @@ int setPlay(vector <char> &board, char move, int turn) {
 * @return true if the game has been won, false otherwise
 */
 bool checkRow(vector <char> &board, char mark) {
-  for (int i = 0; i < board.size(); i+=3) {
-    if (board[i] == mark && board[i + 1] == mark && board[i + 2] == mark) {
-      return true;
+    for (int i = 0; i < board.size(); i+=3) {
+        if (board[i] == mark && board[i + 1] == mark && board[i + 2] == mark) {
+            return true;
+        }
     }
-  }
 
-  return false;
+    return false;
 }
 
 /** 
@@ -143,13 +173,13 @@ bool checkRow(vector <char> &board, char mark) {
 * @return true if the game has been won, false otherwise
 */
 bool checkCol(vector <char> &board, char mark) {
-  for (int i = 0; i < 3; ++i) {
-    if (board[i] == mark && board[i + 3] == mark && board[i + 6] == mark) {
-      return true;
+    for (int i = 0; i < 3; ++i) {
+        if (board[i] == mark && board[i + 3] == mark && board[i + 6] == mark) {
+            return true;
+        }
     }
-  }
 
-  return false;
+    return false;
 }
 
 /** 
@@ -159,12 +189,12 @@ bool checkCol(vector <char> &board, char mark) {
 * @return true if the game has been won, false otherwise
 */
 bool checkDiagonal(vector <char> &board, char mark) {
-  if (board[0] == mark && board[4] == mark && board[8] == mark ||
-  board[2] == mark && board[4] == mark && board[6] == mark) {
-    return true;
-  }
+    if (board[0] == mark && board[4] == mark && board[8] == mark ||
+    board[2] == mark && board[4] == mark && board[6] == mark) {
+        return true;
+    }
 
-  return false;
+    return false;
 }
 
 /**
@@ -174,15 +204,15 @@ bool checkDiagonal(vector <char> &board, char mark) {
 * @return true if the game has been won, false otherwise
 */
 bool gameWon(vector <char> &board) {
-  char marks[2] = {'x', 'o'};
+    char marks[2] = {'x', 'o'};
 
-  for (char mark : marks) {
-    if (checkRow(board, mark) || checkCol(board, mark) || checkDiagonal(board, mark)) {
-      return true;
+    for (char mark : marks) {
+        if (checkRow(board, mark) || checkCol(board, mark) || checkDiagonal(board, mark)) {
+            return true;
+        }
     }
-  }
 
-  return false;
+    return false;
 }
 
 
@@ -193,23 +223,29 @@ bool gameWon(vector <char> &board) {
 * @return true iff the board is full (no cell is available)
 */
 bool boardFull(vector <char> &board) {
-  for (int i = 0; i < board.size(); i++) {
-    if (board.at(i) >= 'a' && board.at(i) <= 'i') {
-      return false;
+    for (int i = 0; i < board.size(); i++) {
+        // if (board.at(i) >= 'a' && board.at(i) <= 'i') {
+        //     return false;
+        // }
+      if (board.at(i) >= '0' && board.at(i) <= '9') {
+          return false;
+      }
     }
-  }
-
-  return true;
+    return true;
 }
 
 /**
 * @brief Checks the move of the player
 *
 * @param the move on the board the player wants to play
-* @return true if move is valid, flase otherwise
+* @return true if move is valid, false otherwise
 */
 bool validMove(char move) {
-  if (move < 'a' || move > 'i') {
+  // if (move < 'a' || move > 'i') {
+  //   return false;
+  // }
+
+  if (move < '0' || move > '9') {
     return false;
   }
   
@@ -228,9 +264,9 @@ char getPlay(vector <char> &board, char move) {
   int index = convertMove(move);
   
   while (!validMove(move) || !validPlacement(board, index)) {
-    cout << "Invalid move. Please try again.\n";
-    cin >> move;
-    index = convertMove(move);
+      cout << "Invalid move. Please try again.\n";
+      cin >> move;
+      index = convertMove(move);
   }
   
   return move;
