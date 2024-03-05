@@ -7,6 +7,8 @@ This is a simple command-line implementation of the classic Tic Tac Toe game wri
 2. Follow the on-screen instructions.
 3. The game will announce the winner or declare a draw when appropriate.
 
+Based on label preferences, users can comment out the code that is associated with the cells being labelled by numbers (1-9) and instead use the code associated with cells being labelled by chars 'a'-'i'. The latter code is currently commented out. To comment out code, type `//` in front of the code. To uncomment it, simply remove the `//`.
+
 ## Possible Future Features
 Larger Board Option: Current version of the game only supports 3x3 boards. In the future, there might be consideration for an option to play with boards larger than 3x3.
 
