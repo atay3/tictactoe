@@ -6,6 +6,7 @@ int main() {
     char move;
 
     cout << "Welcome to Tic Tac Toe!\n\n";
+    //cout << "Use lowercase letters 'a'-'i' to place your mark. Player 1 goes first.\n\n";
     cout << "Use numbers 1-9 to place your mark. Player 1 goes first.\n\n";
   
     initializeBoard(board);
